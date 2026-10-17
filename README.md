@@ -2,7 +2,7 @@
 
 **Round 1: Virtual Postman | ROS 2 Jazzy + Gazebo Harmonic**
 
-This repository contains our participant-side solution for the Sim2Real Robotics Hackathon. The current implementation covers **Tier 1 (coordinate-based navigation)** and **Tier 2 (camera-based waypoint perception and navigation)**. **Tier 3 is not yet implemented**.
+This repository contains our  solution for the Sim2Real Robotics Hackathon. The current implementation covers **Tier 1 (coordinate-based navigation)** and **Tier 2 (camera-based waypoint perception and navigation)**. **Tier 3 is not yet implemented**.
 
 The goal is to autonomously visit the targets in the arena, stop at each target for the required dwell duration, handle targets that appear during the run, and return to the home zone.
 
@@ -217,38 +217,6 @@ The implementation is designed around the following Round 1 requirements:
 - Tier 2 obtains target coordinates from the overhead camera rather than subscribing to the suppressed waypoint topics.
 - The solution code is contained in `postman_solution`; the provided `postman_pkg` is the organizer's simulation/evaluation package and should not be modified.
 
-Tier 3 additionally requires detecting obstacles and planning collision-free paths around them. That functionality is **not complete in this submission**.
-
-## 7. Project layout
-
-```text
-postman_ws/
-├── README.md
-└── src/
-    ├── postman_pkg/                   # Organizer-provided simulation package
-    │   ├── launch/sim.launch.py
-    │   ├── postman_pkg/
-    │   ├── scripts/evaluator.py
-    │   ├── urdf/
-    │   └── worlds/
-    └── postman_solution/              # Participant implementation
-        ├── launch/solution.launch.py
-        └── postman_solution/
-            ├── tier1_node.py           # Odometry + coordinate-based navigation
-            ├── tier2_node.py           # Camera perception + visual pose correction
-            ├── tier3_node.py           # Tier 3 work in progress
-            ├── nav_utils.py            # Route ordering + mission state machine
-            └── vision_utils.py         # Camera geometry + visual detectors
-```
-
-## 8. Known limitations and next steps
-
-- Tier 3 obstacle perception and collision-free path planning remain to be implemented and tested.
-- Encoder/IMU dead reckoning accumulates error; camera-assisted correction in Tier 2 depends on successful robot-body detection and suitable camera frames.
-- Visual detection uses colour and shape thresholds, so lighting, image encoding, partial occlusion, and camera calibration can affect detection quality.
-- The exact route may be recomputed as new points are discovered; performance should be tested on multiple seeds.
-- A successful build does not by itself guarantee a successful evaluation. Test each tier using the supplied evaluator and inspect the logs.
-
 ## Acknowledgements
 
-The repository uses the ROS 2 and Gazebo packages supplied for the Sim2Real Hackathon. The organizer-provided `postman_pkg` contains the simulation environment, sensors, waypoint spawning, and evaluation harness. ROS 2, Gazebo, OpenCV, and NumPy are used as dependencies. Any additional third-party code or libraries should be acknowledged before final submission, in accordance with the hackathon rules.
+The repository uses the ROS 2 and Gazebo packages supplied for the Sim2Real Hackathon. The organizer-provided `postman_pkg` contains the simulation environment, sensors, waypoint spawning, and evaluation harness. ROS 2, Gazebo, OpenCV, and NumPy are used as dependencies.
