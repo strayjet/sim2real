@@ -134,10 +134,6 @@ The implementation is designed around the Round 1 rules:
 
 The official rules define the waypoint capture radius, minimum continuous dwell, run time limit, and evaluation procedure. Final performance must be verified using the organizer's evaluation harness and unseen seeds.
 
-## Dependencies and acknowledgements
-
-This project uses the provided `postman_pkg` simulation platform and its evaluator, together with ROS 2/Jazzy APIs, TF2, NumPy and OpenCV. Install and acknowledge external packages according to the competition rules. The team is responsible for understanding and being able to explain all submitted code.
-
 ## Submission contents
 
 This archive contains the `src/` directory and this `README.md` only. Generated build products (`build/`, `install/`, `log/`), test artifacts, nested candidate archives, and Python bytecode caches are excluded.
